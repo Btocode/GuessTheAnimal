@@ -1,6 +1,5 @@
 package animals;
 
-import java.sql.SQLOutput;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Scanner;
@@ -9,37 +8,40 @@ public class Main {
     public static void main(String[] args) {
         LocalTime now = LocalTime.now();
         int time = now.getHour();
-        String greeting = "";
+        String greeting;
 
 //        Greetings decider
         if(time >= 5 && time < 12) {
-            greeting = "Good Morning ";
+            greeting = "Good Morning!";
         }
         else if(time >= 12 && time < 18) {
-            greeting = "Good Afternoon ";
+            greeting = "Good Afternoon!";
         }
         else{
-            greeting = "Good Evening ";
+            greeting = "Good Evening!";
         }
-        System.out.println(greeting+" \nEnter an Animal ");
+        System.out.println(greeting+" \n\nEnter an Animal:");
 
 //        Taking inputs
         Scanner sc = new Scanner(System.in);
-        while(sc.hasNext()){
+
+
+
+
             String input = sc.nextLine().toLowerCase();
             String []inputArray = input.split(" ");
-            String animalName = "";
-            String article = "";
+            StringBuilder animalName = new StringBuilder();
+            String article;
             if(!inputArray[0].equals("a") && !inputArray[0].equals("an") && !inputArray[0].equals("the")){
                 article = assignAnArticle(inputArray[0]);
-                for(int i = 0; i < inputArray.length; i++){
-                    animalName += inputArray[i];
+                for (String s : inputArray) {
+                    animalName.append(s);
                 }
             }
             else{
                 article = inputArray[0];
                 for(int i = 1; i < inputArray.length; i++){
-                    animalName += inputArray[i];
+                    animalName.append(inputArray[i]);
                 }
             }
 
@@ -78,20 +80,42 @@ public class Main {
                     "Could you please simply say yes or no?",
                     "Oh, no, don't try to confuse me: say yes or no."
             );
-            String confirmation = sc.nextLine();
+            List<String> goodByeList = List.of(
+                    "Goodbye",
+                    "See you never",
+                    "Bye",
+                    "See yaa",
+                    "Catch you later",
+                    "Have a good day"
+            );
 
-            if(positiveConfirmations.contains(confirmation)) {
-                System.out.println("You answered: " + confirmation);
+
+
+            while(sc.hasNext()){
+                String confirmation = sc.nextLine().replaceAll("\\.|\\?", "").toLowerCase();
+
+                if(positiveConfirmations.contains(confirmation)) {
+                    System.out.println("You answered: Yes");
+                    break;
+                }
+                else if(negetiveConfirmations.contains(confirmation)){
+                    System.out.println("You answered: No" );
+                    break;
+                }
+                else{
+                    int randomIndex = (int) ((Math.random() * (clarificationQuestions.size())) + 0);
+                    System.out.println(clarificationQuestions.get(randomIndex));
+                }
             }
-            else if(negetiveConfirmations.contains(confirmation)){
-                System.out.println("You said, " + confirmation);
-            }
-            else{
-                int randomIndex = (int) ((Math.random() * (clarificationQuestions.size())) + 0);
-                System.out.println(clarificationQuestions.get(randomIndex));
-            }
-        }
+            int randomIndex = (int) ((Math.random() * (goodByeList.size())) + 0);
+            System.out.println("\n" +goodByeList.get(randomIndex) + "!");
+
     }
+
+
+
+
+
     private static String assignAnArticle(String animal){
         char alphabet = animal.charAt(0);
         if(alphabet == 'a' || alphabet == 'e' || alphabet == 'i' || alphabet == 'o' || alphabet == 'u' ){
