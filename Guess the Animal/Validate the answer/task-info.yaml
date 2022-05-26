@@ -405,17 +405,8 @@ files:
     }
   learner_created: false
 feedback_link: https://hyperskill.org/learn/step/11079#comment
-status: Failed
+status: Solved
 feedback:
-  message: "Wrong answer in test #1\n\nThe program should ask: &quot;Is it a cat?&quot;\n\
-    Expected contains: &quot;Is it a cat?&quot;\nActual data is: &quot;Is it the cat?&quot;.\n\
-    \nPlease find below the output of your program during this failed test.\nNote\
-    \ that the &#39;&gt;&#39; character indicates the beginning of the input line.\n\
-    \n---\n\nScenario &#39;animals&#39; is started.\n\nGood Morning! \n\nEnter an\
-    \ Animal:\n&gt; cat\nIs it a cat?\nGood Morning! \n\nEnter an Animal:\n&gt; CAT\n\
-    Is it a cat?\nGood Morning! \n\nEnter an Animal:\n&gt; Cat\nIs it a cat?\nGood\
-    \ Morning! \n\nEnter an Animal:\n&gt; a cat\nIs it a cat?\nGood Morning! \n\n\
-    Enter an Animal:\n&gt; A cat\nIs it a cat?\nGood Morning! \n\nEnter an Animal:\n\
-    &gt; the cat\nIs it the cat?"
-  time: Wed, 25 May 2022 05:41:33 UTC
+  message: Congratulations!
+  time: Thu, 26 May 2022 06:32:18 UTC
 record: -1
