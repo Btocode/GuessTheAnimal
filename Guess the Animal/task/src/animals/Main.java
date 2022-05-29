@@ -1,10 +1,20 @@
 package animals;
 
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
+    public final static List<String> goodByeList = List.of(
+            "Goodbye",
+            "See you never",
+            "Bye",
+            "See yaa",
+            "Catch you later",
+            "Have a good day",
+            "Talk to you later"
+    );
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         LocalTime now = LocalTime.now();
@@ -22,9 +32,9 @@ public class Main {
 
 //        Taking inputs
         System.out.println(greeting + "\n");
-        System.out.println("Enter the first Animal:");
+        System.out.println("Enter the first animal:");
         String[] firstAnimalArray = sc.nextLine().toLowerCase().trim().split(" ");
-        System.out.println("Enter the Second Animal:");
+        System.out.println("Enter the second animal:");
         String[] secondAnimalArray = sc.nextLine().toLowerCase().trim().split(" ");
 
         Animal firstAnimalObj = getPropertiesForAnimal(firstAnimalArray);
@@ -34,7 +44,7 @@ public class Main {
 
         //Taking input for animal property
         String statementGiven = "";
-        while (sc.hasNext()) {
+        while (sc.hasNextLine()) {
             statementGiven = sc.nextLine().trim();
             String[] statementArray = statementGiven.split(" ");
             Boolean isCorrectFormat = verifyStatement(statementArray);
@@ -53,40 +63,45 @@ public class Main {
 
 
         System.out.println("Is it correct for " + secondAnimalObj.getArticle() + " " + secondAnimalObj.getName() + "?");
-        String responseText = sc.nextLine().toLowerCase().trim();
+        String responseText = sc.nextLine().toLowerCase(Locale.ROOT).trim();
 
 //            Based on the user response print something
         String[] statement = statementGiven.split(" ");
         StringBuilder tempString = new StringBuilder();
         StringBuilder tempString1 = new StringBuilder();
+
+        while(!(responseText.equals("yes") || responseText.equals("no"))){
+            System.out.println("Your answer should be yes or no");
+            responseText = sc.nextLine().toLowerCase(Locale.ROOT).trim();
+        }
         if (responseText.equals("yes")) {
             //statement is true for animal 2
 
-            tempString.append("The ")
+            tempString.append(" The ")
                     .append(firstAnimalObj.getName())
                     .append(" ").append(statement[1].contains("has") ? "does" : statement[1])
                     .append(statement[1].contains("can") ? "'t " : statement[1].contains("has") ? "n't have ": "n't ");
             sentenceMaker(statement, tempString);
 
-            System.out.println("I learned the following facts about animals:\n-"
+            System.out.println("I learned the following facts about animals:\n - "
                     + tempString.toString().trim());
 
-            tempString1.append("The ")
+            tempString1.append(" The ")
                     .append(secondAnimalObj.getName())
                     .append(" ").append(statement[1])
                     .append(" ");
         } else {
             //statement is true for animal 2
 
-            tempString.append("The ")
+            tempString.append(" The ")
                     .append(firstAnimalObj.getName())
                     .append(" ").append(statement[1]).append(" ");
             sentenceMaker(statement, tempString);
 
-            System.out.println("I learned the following facts about animals:\n-"
+            System.out.println("I learned the following facts about animals:\n - "
                     + tempString.toString().trim());
 
-            tempString1.append("The ")
+            tempString1.append(" The ")
                     .append(secondAnimalObj.getName())
                     .append(" ").append(statement[1].contains("has") ? "does" : statement[1])
                     .append(statement[1].contains("can") ? "'t " : statement[1].contains("has") ? "n't have ": "n't ");
@@ -99,7 +114,7 @@ public class Main {
 
     private static void printStatement(String[] statement, StringBuilder tempString1) {
         sentenceMaker(statement, tempString1);
-        System.out.print("-"
+        System.out.print(" - "
                 + tempString1.toString().trim() + "\n");
 
 
@@ -115,7 +130,10 @@ public class Main {
             appendStringArray(tempString2, statement);
         }
 
-        System.out.println("I can distinguish these animals by asking the question:\n-" + tempString2.toString().trim());
+        System.out.println("I can distinguish these animals by asking the question:\n - " + ((tempString2.toString().trim()).contains("?") ? (tempString2.toString().trim()) : (tempString2.toString().trim() + "?")));
+        int randomIndex = (int) ((Math.random() * (goodByeList.size())) + 0);
+        System.out.println("\n" + goodByeList.get(randomIndex) + "!");
+
     }
 
     private static void sentenceMaker(String[] statement, StringBuilder tempString1) {
@@ -139,7 +157,7 @@ public class Main {
 
     public static Boolean verifyStatement(String[] statement) {
         if (statement.length > 1) {
-            return (statement[0].compareTo("It") == 0) && (statement[1].contains("can") || statement[1].contains("has") || statement[1].contains("is"));
+            return (statement[0].compareToIgnoreCase("It") == 0) && (statement[1].equalsIgnoreCase("can") || statement[1].equalsIgnoreCase("has") || statement[1].equalsIgnoreCase("is"));
 
         } else return false;
 

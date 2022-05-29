@@ -381,71 +381,8 @@ files:
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/learn/step/11080#comment
-status: Failed
+status: Solved
 feedback:
-  message: |-
-    Wrong answer in test #2
-
-    The program should clarify if the statement is correct for a dog.
-    Expected contains: &quot;correct for a dog?&quot;
-    Actual data is: &quot;The examples of a statement:
-     - It can fly
-     - It has horn
-     - It is a mammal
-    Specify a fact that distinguishes a cat from a dog.
-    The sentence should be of the format: &#39;It can/has/is ...&#39;.&quot;.
-
-    Please find below the output of your program during this failed test.
-    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
-
-    ---
-
-    Scenario &#39;correct-statement&#39; is started.
-
-    Good Evening!
-
-    Enter the first Animal:
-    &gt; cat
-    Enter the Second Animal:
-    &gt; dog
-    Specify a fact that distinguishes a cat from a dog.
-    The sentence should be of the format: &#39;It can/has/is ...&#39;.
-    &gt; It is a mammal
-    Is it correct for a dog?
-    Good Evening!
-
-    Enter the first Animal:
-    &gt; cat
-    Enter the Second Animal:
-    &gt; dog
-    Specify a fact that distinguishes a cat from a dog.
-    The sentence should be of the format: &#39;It can/has/is ...&#39;.
-    &gt; It can barks
-    Is it correct for a dog?
-    Good Evening!
-
-    Enter the first Animal:
-    &gt; cat
-    Enter the Second Animal:
-    &gt; dog
-    Specify a fact that distinguishes a cat from a dog.
-    The sentence should be of the format: &#39;It can/has/is ...&#39;.
-    &gt; It has a tail
-    Is it correct for a dog?
-    Good Evening!
-
-    Enter the first Animal:
-    &gt; cat
-    Enter the Second Animal:
-    &gt; dog
-    Specify a fact that distinguishes a cat from a dog.
-    The sentence should be of the format: &#39;It can/has/is ...&#39;.
-    &gt; IT IS A SHY ANIMAL
-    The examples of a statement:
-     - It can fly
-     - It has horn
-     - It is a mammal
-    Specify a fact that distinguishes a cat from a dog.
-    The sentence should be of the format: &#39;It can/has/is ...&#39;.
-  time: Sun, 29 May 2022 12:10:49 UTC
+  message: Congratulations!
+  time: Sun, 29 May 2022 13:29:01 UTC
 record: -1
