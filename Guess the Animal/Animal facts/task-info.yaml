@@ -126,6 +126,9 @@ files:
     }
 
   learner_created: false
+- name: src/animals/Animal.java
+  visible: true
+  learner_created: true
 - name: test/correct-statement.script.yaml
   visible: false
   text: |
@@ -377,9 +380,6 @@ files:
 
     - [finish, The program should finish.]
   learner_created: false
-- name: src/animals/Animal.java
-  visible: true
-  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/11080#comment
 status: Solved
 feedback:

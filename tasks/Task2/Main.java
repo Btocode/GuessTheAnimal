@@ -32,8 +32,7 @@ public class Main {
 
 //        Taking inputs
         System.out.println(greeting + "\n");
-        System.out.println("I want to learn about animals.\n" +
-                "Which animal do you like most?");
+        System.out.println("Enter the first animal:");
         String[] firstAnimalArray = sc.nextLine().toLowerCase().trim().split(" ");
         System.out.println("Enter the second animal:");
         String[] secondAnimalArray = sc.nextLine().toLowerCase().trim().split(" ");
@@ -200,3 +199,4 @@ public class Main {
         }
     }
 }
+
