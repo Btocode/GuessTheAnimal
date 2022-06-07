@@ -4,6 +4,7 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.function.BinaryOperator;
 
 public class Main {
     public final static List<String> goodByeList = List.of(
@@ -30,6 +31,8 @@ public class Main {
             greeting = "Good Evening!";
         }
 
+
+
 //        Taking inputs
         System.out.println(greeting + "\n");
         System.out.println("I want to learn about animals.\n" +
@@ -41,74 +44,83 @@ public class Main {
         Animal firstAnimalObj = getPropertiesForAnimal(firstAnimalArray);
         Animal secondAnimalObj = getPropertiesForAnimal(secondAnimalArray);
 
-        System.out.println("Specify a fact that distinguishes " + firstAnimalObj.getArticle() + " " + firstAnimalObj.getName() + " from " + secondAnimalObj.getArticle() + " " + secondAnimalObj.getName() + ".\nThe sentence should be of the format: 'It can/has/is ...'.");
+        //Sending names in tree
+        AnimalTree obj = new AnimalTree();
+        obj.insertData(firstAnimalObj.getName());
+        String info = obj.searchData("pet");
+        System.out.println("Wonderful! I've learned so much about animals!\n" +
+                "Let's play a game!\n" +
+                "You think of an animal, and I guess it.\n" +
+                "Press enter when you're ready.");
 
-        //Taking input for animal property
-        String statementGiven = "";
-        while (sc.hasNextLine()) {
-            statementGiven = sc.nextLine().trim();
-            String[] statementArray = statementGiven.split(" ");
-            Boolean isCorrectFormat = verifyStatement(statementArray);
-
-            if (isCorrectFormat) {
-                break;
-            } else {
-                System.out.println("The examples of a statement:\n" +
-                        " - It can fly\n" +
-                        " - It has horn\n" +
-                        " - It is a mammal");
-                System.out.println("Specify a fact that distinguishes " + firstAnimalObj.getArticle() + " " + firstAnimalObj.getName() + " from " + secondAnimalObj.getArticle() + " " + secondAnimalObj.getName() + ".\nThe sentence should be of the format: 'It can/has/is ...'.");
-
-            }
-        }
-
-
-        System.out.println("Is it correct for " + secondAnimalObj.getArticle() + " " + secondAnimalObj.getName() + "?");
-        String responseText = sc.nextLine().toLowerCase(Locale.ROOT).trim();
-
-//            Based on the user response print something
-        String[] statement = statementGiven.split(" ");
-        StringBuilder tempString = new StringBuilder();
-        StringBuilder tempString1 = new StringBuilder();
-
-        while(!(responseText.equals("yes") || responseText.equals("no"))){
-            System.out.println("Your answer should be yes or no");
-            responseText = sc.nextLine().toLowerCase(Locale.ROOT).trim();
-        }
-        if (responseText.equals("yes")) {
-            //statement is true for animal 2
-
-            tempString.append(" The ")
-                    .append(firstAnimalObj.getName())
-                    .append(" ").append(statement[1].contains("has") ? "does" : statement[1])
-                    .append(statement[1].contains("can") ? "'t " : statement[1].contains("has") ? "n't have ": "n't ");
-            sentenceMaker(statement, tempString);
-
-            System.out.println("I learned the following facts about animals:\n - "
-                    + tempString.toString().trim());
-
-            tempString1.append(" The ")
-                    .append(secondAnimalObj.getName())
-                    .append(" ").append(statement[1])
-                    .append(" ");
-        } else {
-            //statement is true for animal 2
-
-            tempString.append(" The ")
-                    .append(firstAnimalObj.getName())
-                    .append(" ").append(statement[1]).append(" ");
-            sentenceMaker(statement, tempString);
-
-            System.out.println("I learned the following facts about animals:\n - "
-                    + tempString.toString().trim());
-
-            tempString1.append(" The ")
-                    .append(secondAnimalObj.getName())
-                    .append(" ").append(statement[1].contains("has") ? "does" : statement[1])
-                    .append(statement[1].contains("can") ? "'t " : statement[1].contains("has") ? "n't have ": "n't ");
-            sentenceMaker(statement, tempString);
-        }
-        printStatement(statement, tempString1);
+//        System.out.println("Specify a fact that distinguishes " + firstAnimalObj.getArticle() + " " + firstAnimalObj.getName() + " from " + secondAnimalObj.getArticle() + " " + secondAnimalObj.getName() + ".\nThe sentence should be of the format: 'It can/has/is ...'.");
+//
+//        //Taking input for animal property
+//        String statementGiven = "";
+//        while (sc.hasNextLine()) {
+//            statementGiven = sc.nextLine().trim();
+//            String[] statementArray = statementGiven.split(" ");
+//            Boolean isCorrectFormat = verifyStatement(statementArray);
+//
+//            if (isCorrectFormat) {
+//                break;
+//            } else {
+//                System.out.println("The examples of a statement:\n" +
+//                        " - It can fly\n" +
+//                        " - It has horn\n" +
+//                        " - It is a mammal");
+//                System.out.println("Specify a fact that distinguishes " + firstAnimalObj.getArticle() + " " + firstAnimalObj.getName() + " from " + secondAnimalObj.getArticle() + " " + secondAnimalObj.getName() + ".\nThe sentence should be of the format: 'It can/has/is ...'.");
+//
+//            }
+//        }
+//
+//
+//        System.out.println("Is it correct for " + secondAnimalObj.getArticle() + " " + secondAnimalObj.getName() + "?");
+//        String responseText = sc.nextLine().toLowerCase(Locale.ROOT).trim();
+//
+////            Based on the user response print something
+//        String[] statement = statementGiven.split(" ");
+//        StringBuilder tempString = new StringBuilder();
+//        StringBuilder tempString1 = new StringBuilder();
+//
+//        while(!(responseText.equals("yes") || responseText.equals("no"))){
+//            System.out.println("Your answer should be yes or no");
+//            responseText = sc.nextLine().toLowerCase(Locale.ROOT).trim();
+//        }
+//        if (responseText.equals("yes")) {
+//            //statement is true for animal 2
+//
+//            tempString.append(" The ")
+//                    .append(firstAnimalObj.getName())
+//                    .append(" ").append(statement[1].contains("has") ? "does" : statement[1])
+//                    .append(statement[1].contains("can") ? "'t " : statement[1].contains("has") ? "n't have ": "n't ");
+//            sentenceMaker(statement, tempString);
+//
+//            System.out.println("I learned the following facts about animals:\n - "
+//                    + tempString.toString().trim());
+//
+//            tempString1.append(" The ")
+//                    .append(secondAnimalObj.getName())
+//                    .append(" ").append(statement[1])
+//                    .append(" ");
+//        } else {
+//            //statement is true for animal 2
+//
+//            tempString.append(" The ")
+//                    .append(firstAnimalObj.getName())
+//                    .append(" ").append(statement[1]).append(" ");
+//            sentenceMaker(statement, tempString);
+//
+//            System.out.println("I learned the following facts about animals:\n - "
+//                    + tempString.toString().trim());
+//
+//            tempString1.append(" The ")
+//                    .append(secondAnimalObj.getName())
+//                    .append(" ").append(statement[1].contains("has") ? "does" : statement[1])
+//                    .append(statement[1].contains("can") ? "'t " : statement[1].contains("has") ? "n't have ": "n't ");
+//            sentenceMaker(statement, tempString);
+//        }
+//        printStatement(statement, tempString1);
 
 
     }
