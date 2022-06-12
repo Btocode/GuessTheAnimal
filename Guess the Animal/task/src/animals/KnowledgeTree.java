@@ -1,21 +1,19 @@
 package animals;
 
-import com.sun.source.tree.Tree;
+public class KnowledgeTree {
 
-public class AnimalTree {
+    static class TreeNode<T> {
+        private T data;
+        private T left;
+        private  T right;
 
-    public class TreeNode {
-        private String data;
-        private TreeNode left;
-        private  TreeNode right;
-
-        public TreeNode(String data) {
+        public TreeNode(T data) {
             this.data = data;
             this.left = this.right = null;
         }
     }
     TreeNode root;
-    public AnimalTree() {
+    public KnowledgeTree() {
         root = null;
     }
 

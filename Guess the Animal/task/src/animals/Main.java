@@ -20,6 +20,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         LocalTime now = LocalTime.now();
         int time = now.getHour();
+
         String greeting;
 
 //        Greetings decider
@@ -45,7 +46,7 @@ public class Main {
         Animal secondAnimalObj = getPropertiesForAnimal(secondAnimalArray);
 
         //Sending names in tree
-        AnimalTree obj = new AnimalTree();
+        KnowledgeTree obj = new KnowledgeTree();
         obj.insertData(firstAnimalObj.getName());
         String info = obj.searchData("pet");
         System.out.println("Wonderful! I've learned so much about animals!\n" +

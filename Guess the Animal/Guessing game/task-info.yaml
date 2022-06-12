@@ -608,7 +608,7 @@ files:
       - "yes or no"
       - "The answer \"{0}\" is unclear and the program should ask again."
   learner_created: false
-- name: src/animals/AnimalTree.java
+- name: src/animals/KnowledgeTree.java
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/learn/step/11081#comment
