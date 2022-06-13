@@ -3,21 +3,21 @@ package animals;
 public class KnowledgeTree {
 
     static class TreeNode<T> {
-        private T data;
-        private T left;
-        private  T right;
+        T data;
+        private TreeNode<T> left;
+        private  TreeNode<T> right;
 
         public TreeNode(T data) {
             this.data = data;
             this.left = this.right = null;
         }
     }
-    TreeNode root;
+    TreeNode<String> root;
     public KnowledgeTree() {
         root = null;
     }
 
-    private TreeNode insert(TreeNode root, String animalName){
+    private TreeNode<String> insert(TreeNode<String> root, String animalName){
         if(root == null){
             return root  = new TreeNode(animalName);
         }
@@ -30,7 +30,7 @@ public class KnowledgeTree {
          return root;
     }
 
-    private String search(TreeNode root, String data){
+    private String search(TreeNode<String> root, String data){
         if(root == null || root.data.equalsIgnoreCase(data)){
             return root == null ? "Not Found": root.data;
         }
